@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     loggedUser: req.user ? req.user : null
   }
   console.log(vm);
-  res.render('index2', vm);
+  res.render('index', vm);
 });
 
 module.exports = router;

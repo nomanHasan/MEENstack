@@ -15,7 +15,10 @@ var connectMongo = require('connect-mongo');
 var MongoStore = connectMongo(expressSession);
 
 var index = require('./routes/index');
+var home = require('./routes/home');
 var users = require('./routes/users');
+var students = require('./routes/students');
+var teachers = require('./routes/teachers');
 
 var passportConfig = require('./auth/passport-config');
 passportConfig();
@@ -39,7 +42,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 //Using the Express Session Middleware
 app.use(expressSession({
   secret: 'Kamehameha',
@@ -54,6 +56,9 @@ app.use(passport.session());
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/home', home);
+app.use('/students', students);
+app.use('/teachers', teachers);
 // app.use(restrict);
 
 // catch 404 and forward to error handler
